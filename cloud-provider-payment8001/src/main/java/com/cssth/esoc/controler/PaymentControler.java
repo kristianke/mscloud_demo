@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -17,6 +18,13 @@ public class PaymentControler {
     PaymentService service;
     @Value("${server.port}")
     private String port;
+
+    @GetMapping(value = "/payment/timeout")
+    public String paymentFeignTimeout(){
+        try {TimeUnit.SECONDS.sleep(3);} catch (InterruptedException e) {e.printStackTrace();}
+        return port;
+    }
+
     @RequestMapping(value = "/payment/getById/{id}", method = RequestMethod.GET)
     public CommonResult getPayment(@PathVariable("id") Long id){
         Payment payment = service.getPaymentById(id);
