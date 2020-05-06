@@ -1,4 +1,4 @@
-package com.cssth.springcloud.controler;
+package com.cssth.esoc.controler;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +14,6 @@ public class PaymentControler {
 
     @GetMapping(value = "/payment/zk")
     public String paymentzk(){
-        return "springcloud with zookeeper:"+serverPort+"\t"+ UUID.randomUUID().toString();
+        return "esoc with zookeeper:"+serverPort+"\t"+ UUID.randomUUID().toString();
     }
 }
